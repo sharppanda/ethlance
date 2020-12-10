@@ -1,6 +1,6 @@
 specVersion: 0.0.2
-description: Gravatar for Ethereum
-repository: https://github.com/graphprotocol/example-subgraph
+description: Ethlance
+repository: https://github.com/sharppanda/ethlance
 schema:
   file: ./schema.graphql
 dataSources:
@@ -23,6 +23,4 @@ dataSources:
       callHandlers:
         - function: setJob(uint256,string,string,uint256[],uint256,uint256,uint8[],bool,bool,address[])
           handler: handleSetJob
-        - functionL setJobStatus(uint256,uint8)
-          handler: handleSetJobStatus
       file: ./src/mapping.ts

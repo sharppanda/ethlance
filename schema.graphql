@@ -2,15 +2,4 @@ type Job @entity {
   id: ID!
   title: String!
   description: String!
-  jobStatus: JobStatus!
-}
-
-
-enum JobStatus {
-  Hiring
-  HiringDone
-  Blocked
-  Draft
-  Refunding
-  Refunded
 }

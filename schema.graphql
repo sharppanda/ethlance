@@ -14,3 +14,9 @@ enum JobStatus {
   Refunding
   Refunded
 }
+
+type DbMapping @entity {
+  id: ID!
+  jobId: ID!
+  propertyType: String!
+}

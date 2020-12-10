@@ -59,4 +59,62 @@ export class Job extends Entity {
   set description(value: string) {
     this.set("description", Value.fromString(value));
   }
+
+  get jobStatus(): string {
+    let value = this.get("jobStatus");
+    return value.toString();
+  }
+
+  set jobStatus(value: string) {
+    this.set("jobStatus", Value.fromString(value));
+  }
+}
+
+export class DbMapping extends Entity {
+  constructor(id: string) {
+    super();
+    this.set("id", Value.fromString(id));
+  }
+
+  save(): void {
+    let id = this.get("id");
+    assert(id !== null, "Cannot save DbMapping entity without an ID");
+    assert(
+      id.kind == ValueKind.STRING,
+      "Cannot save DbMapping entity with non-string ID. " +
+        'Considering using .toHex() to convert the "id" to a string.'
+    );
+    store.set("DbMapping", id.toString(), this);
+  }
+
+  static load(id: string): DbMapping | null {
+    return store.get("DbMapping", id) as DbMapping | null;
+  }
+
+  get id(): string {
+    let value = this.get("id");
+    return value.toString();
+  }
+
+  set id(value: string) {
+    this.set("id", Value.fromString(value));
+  }
+
+  get jobId(): string {
+    let value = this.get("jobId");
+    return value.toString();
+  }
+
+  set jobId(value: string) {
+    this.set("jobId", Value.fromString(value));
+  }
+
+  get propertyType(): string {
+    let value = this.get("propertyType");
+    return value.toString();
+  }
+
+  set propertyType(value: string) {
+    this.set("propertyType", Value.fromString(value));
+  }
 }

@@ -23,6 +23,9 @@ dataSources:
       callHandlers:
         - function: setJob(uint256,string,string,uint256[],uint256,uint256,uint8[],bool,bool,address[])
           handler: handleSetJob
-        - functionL setJobStatus(uint256,uint8)
+        - function: setJobStatus(uint256,uint8)
           handler: handleSetJobStatus
+      eventHandlers:
+        - event: onJobAdded(uint256)
+          handler: handleOnJobAdded
       file: ./src/mapping.ts

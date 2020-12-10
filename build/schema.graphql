@@ -2,4 +2,7 @@ type Job @entity {
   id: ID!
   title: String!
   description: String!
+  budget: BigInt!
+  skills: [String]!
+  language: String!
 }

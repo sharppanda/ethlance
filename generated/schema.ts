@@ -59,4 +59,31 @@ export class Job extends Entity {
   set description(value: string) {
     this.set("description", Value.fromString(value));
   }
+
+  get budget(): BigInt {
+    let value = this.get("budget");
+    return value.toBigInt();
+  }
+
+  set budget(value: BigInt) {
+    this.set("budget", Value.fromBigInt(value));
+  }
+
+  get skills(): Array<string | null> {
+    let value = this.get("skills");
+    return value.toStringArray();
+  }
+
+  set skills(value: Array<string | null>) {
+    this.set("skills", Value.fromStringArray(value));
+  }
+
+  get language(): string {
+    let value = this.get("language");
+    return value.toString();
+  }
+
+  set language(value: string) {
+    this.set("language", Value.fromString(value));
+  }
 }

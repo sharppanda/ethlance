@@ -17,23 +17,7 @@ export function handleSetJob(event: SetJobCall): void {
 
   job.language = Languages[event.inputs.language.toI32() - 1]
 
-  // job.skills = new Array<string>()
-  // for (let index = 0; index < event.inputs.skills.length; index++) {
-    
-  //   let a = event.inputs.skills[index].toI32()
-  //   job.skills.push(Skills[a])
-  // }
-  // event.inputs.skills.forEach((id, index, array) => 
-  //   job.skills.push(Skills[id.toI32() - 1])
-  // );
-  //job.skills = event.inputs.skills.map((id :BigInt, index, array) => Skills[id.toI32() - 1])
-  // let skillIds : Array<BigInt> = event.inputs.skills
-  // let ids = skillIds.map((id:BigInt) => id.toI32())
-  // ids.forEach(id => {
-  //   Skills[id]
-  // });
-  // job.skills = ids.map(id => Skills[id])
-  // job.skills = new Array<string>()
+  // job.skills = event.inputs.skills.map<string>((id :BigInt, index, array) => Skills[id.toI32() - 1])
 
   job.budget = event.inputs.budget
   job.save()

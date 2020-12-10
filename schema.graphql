@@ -3,6 +3,6 @@ type Job @entity {
   title: String!
   description: String!
   budget: BigInt!
-  skills: [String]!
+  #skills: [String]!
   language: String!
 }

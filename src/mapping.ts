@@ -1,22 +1,37 @@
-import { NewGravatar, UpdatedGravatar } from '../generated/Gravity/Gravity'
-import { Gravatar } from '../generated/schema'
+import {  Jobs, onJobAdded, SetJobCall } from '../generated/Ethlance/Jobs'
+import { Job } from '../generated/schema'
 
-export function handleNewGravatar(event: NewGravatar): void {
-  let gravatar = new Gravatar(event.params.id.toHex())
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+export function handleOnJobAdded(event: onJobAdded): void {
+  let job = new Job(event.params.jobId.toHex())
+  job.title = "test"
+  job.description = "test"
+  
+  job.save()
 }
 
-export function handleUpdatedGravatar(event: UpdatedGravatar): void {
-  let id = event.params.id.toHex()
-  let gravatar = Gravatar.load(id)
-  if (gravatar == null) {
-    gravatar = new Gravatar(id)
+export function handleSetJob(event: SetJobCall): void {
+  let job = new Job(event.inputs.jobId.toHex())
+  job.title = event.inputs.title
+  job.description = event.inputs.description
+  Jobs.state = parseJobStatus(event.inputs.)
+  job.save()
+}
+
+function parseJobStatus(statusId: number): string {
+  switch (statusId) {
+    case 1:
+      return "Hiring"
+    case 2:
+      return "HiringDone"
+    case 3:
+      return "Blocked"
+    case 4:
+      return "Draft"
+    case 5:
+      return "Refunding"
+    case 6:
+      return "Refunded"
   }
-  gravatar.owner = event.params.owner
-  gravatar.displayName = event.params.displayName
-  gravatar.imageUrl = event.params.imageUrl
-  gravatar.save()
+
+  throw new Error("Unsupported job state: " + statusId);
 }

@@ -1,6 +1,16 @@
-type Gravatar @entity {
+type Job @entity {
   id: ID!
-  owner: Bytes!
-  displayName: String!
-  imageUrl: String!
+  title: String!
+  description: String!
+  jobStatus: JobStatus!
+}
+
+
+enum JobStatus {
+  Hiring
+  HiringDone
+  Blocked
+  Draft
+  Refunding
+  Refunded
 }

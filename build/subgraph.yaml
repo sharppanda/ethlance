@@ -2,13 +2,13 @@ specVersion: 0.0.2
 description: Gravatar for Ethereum
 repository: https://github.com/graphprotocol/example-subgraph
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum/contract
     name: Ethlance
     network: mainnet
     source:
-      address: '0xB9E80ce5A7CbbA0Aab685797F6585AD1f3c90028'
+      address: "0xB9E80ce5A7CbbA0Aab685797F6585AD1f3c90028"
       abi: Jobs
       startBlock: 3636175
     mapping:
@@ -19,10 +19,8 @@ dataSources:
         - Job
       abis:
         - name: Jobs
-          file: ./abis/Jobs.json
+          file: Ethlance\abis\Jobs.json
       callHandlers:
         - function: setJob(uint256,string,string,uint256[],uint256,uint256,uint8[],bool,bool,address[])
           handler: handleSetJob
-        - functionL setJobStatus(uint256,uint8)
-          handler: handleSetJobStatus
-      file: ./src/mapping.ts
+      file: Ethlance\Ethlance.wasm
